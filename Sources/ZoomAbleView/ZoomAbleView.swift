@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ZoomAbleView<V: View>: View {
+public struct ZoomAbleView<V: View>: View {
     var max: CGFloat
     var min: CGFloat
     var content: V
@@ -16,7 +16,7 @@ struct ZoomAbleView<V: View>: View {
     @State private var mouseWheelEvent: Any? = nil
     @State private var controlHover: Bool = false
 
-    init(zoom: Binding<CGFloat>, offset: Binding<CGSize>, max: CGFloat = 3.0, min: CGFloat = 0.5, showControl: Bool = false, autoHidden: Bool = true, @ViewBuilder content: () -> V) {
+    public init(zoom: Binding<CGFloat>, offset: Binding<CGSize>, max: CGFloat = 3.0, min: CGFloat = 0.5, showControl: Bool = false, autoHidden: Bool = true, @ViewBuilder content: () -> V) {
         self.max = max
         self.min = min
         self.content = content()
@@ -26,7 +26,7 @@ struct ZoomAbleView<V: View>: View {
         self._contentOffset = offset
     }
 
-    var body: some View {
+    public var body: some View {
         VStack {
             HStack {
                 Spacer()
