@@ -1,10 +1,3 @@
-//
-//  ZoomAbleImageViewApp.swift
-//  ZoomAbleImageView
-//
-//  Created by cnsinda on 10/20/23.
-//
-
 import SwiftUI
 
 @main

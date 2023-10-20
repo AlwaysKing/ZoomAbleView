@@ -12,6 +12,8 @@
 		39409E1D2AE25A9C007B8589 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39409E1C2AE25A9C007B8589 /* Assets.xcassets */; };
 		39409E202AE25A9C007B8589 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39409E1F2AE25A9C007B8589 /* Preview Assets.xcassets */; };
 		39409E282AE25AC0007B8589 /* ZoomAbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39409E272AE25AC0007B8589 /* ZoomAbleView.swift */; };
+		39409E382AE27DF2007B8589 /* ZoomAbleViewControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39409E372AE27DF2007B8589 /* ZoomAbleViewControlButton.swift */; };
+		39409E3C2AE2843E007B8589 /* ZoomAbleViewSimple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39409E3B2AE2843E007B8589 /* ZoomAbleViewSimple.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		39409E1F2AE25A9C007B8589 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		39409E212AE25A9C007B8589 /* ZoomAbleImageView.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZoomAbleImageView.entitlements; sourceTree = "<group>"; };
 		39409E272AE25AC0007B8589 /* ZoomAbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZoomAbleView.swift; path = ../../../Sources/ZoomAbleView/ZoomAbleView.swift; sourceTree = "<group>"; };
+		39409E372AE27DF2007B8589 /* ZoomAbleViewControlButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZoomAbleViewControlButton.swift; path = ../../../Sources/ZoomAbleView/ZoomAbleViewControlButton.swift; sourceTree = "<group>"; };
+		39409E3B2AE2843E007B8589 /* ZoomAbleViewSimple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZoomAbleViewSimple.swift; path = ../../../Sources/ZoomAbleView/ZoomAbleViewSimple.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 			isa = PBXGroup;
 			children = (
 				39409E182AE25A9B007B8589 /* ZoomAbleImageViewApp.swift */,
+				39409E372AE27DF2007B8589 /* ZoomAbleViewControlButton.swift */,
+				39409E3B2AE2843E007B8589 /* ZoomAbleViewSimple.swift */,
 				39409E272AE25AC0007B8589 /* ZoomAbleView.swift */,
 				39409E1A2AE25A9B007B8589 /* ContentView.swift */,
 				39409E1C2AE25A9C007B8589 /* Assets.xcassets */,
@@ -145,6 +151,8 @@
 				39409E1B2AE25A9B007B8589 /* ContentView.swift in Sources */,
 				39409E282AE25AC0007B8589 /* ZoomAbleView.swift in Sources */,
 				39409E192AE25A9B007B8589 /* ZoomAbleImageViewApp.swift in Sources */,
+				39409E382AE27DF2007B8589 /* ZoomAbleViewControlButton.swift in Sources */,
+				39409E3C2AE2843E007B8589 /* ZoomAbleViewSimple.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

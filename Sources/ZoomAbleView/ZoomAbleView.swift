@@ -1,27 +1,29 @@
-//
-//  ZoomAbleVIew.swift
-//  SwiftUIByExample
-//
-//  Created by cnsinda on 10/20/23.
-//
-
 import SwiftUI
 
 struct ZoomAbleView<V: View>: View {
-    var max: CGFloat = 3.0
-    var min: CGFloat = 0.5
+    var max: CGFloat
+    var min: CGFloat
     var content: V
+    var showControl: Bool
+    var autoHidden: Bool
 
-    @State private var zoom = 1.0
-    @State private var contentOffset: CGSize = CGSizeZero
+    @Binding var zoom: CGFloat
+    @Binding var contentOffset: CGSize
     @State private var preContentOffset: CGSize = CGSizeZero
     @State private var panelHover: CGPoint = CGPoint.zero
     @State private var contentSize: CGSize = CGSizeZero
     @State private var panelSize: CGSize = CGSizeZero
-    @State private var mouseWheelEvent: Any?
+    @State private var mouseWheelEvent: Any? = nil
+    @State private var controlHover: Bool = false
 
-    init(@ViewBuilder content: () -> V) {
+    init(zoom: Binding<CGFloat>, offset: Binding<CGSize>, max: CGFloat = 3.0, min: CGFloat = 0.5, showControl: Bool = false, autoHidden: Bool = true, @ViewBuilder content: () -> V) {
+        self.max = max
+        self.min = min
         self.content = content()
+        self.showControl = showControl
+        self.autoHidden = autoHidden
+        self._zoom = zoom
+        self._contentOffset = offset
     }
 
     var body: some View {
@@ -58,6 +60,43 @@ struct ZoomAbleView<V: View>: View {
                             }
                     )
                 Spacer()
+            }
+            .overlay {
+                if showControl == true {
+                    VStack {
+                        HStack {
+                            Spacer()
+                            VStack {
+                                VStack {
+                                    if !autoHidden || (autoHidden && controlHover) {
+                                        ZoomAbleViewControlButton {
+                                            reset()
+                                        } content: {
+                                            Image(systemName: "rectangle.on.rectangle.square").imageScale(.large)
+                                        }
+
+                                        ZoomAbleViewControlButton {
+                                            zoomIn()
+                                        } content: {
+                                            Image(systemName: "plus.magnifyingglass").imageScale(.large)
+                                        }
+
+                                        ZoomAbleViewControlButton {
+                                            zoomOut()
+                                        } content: {
+                                            Image(systemName: "minus.magnifyingglass").imageScale(.large)
+                                        }
+                                    }
+                                }
+                                .frame(width: 40, height: 120)
+                                .onHover { controlHover = $0 }
+                                .padding(10)
+                                Spacer()
+                            }
+                        }
+                        Spacer()
+                    }
+                }
             }
             .overlay(
                 GeometryReader { geometry in
@@ -126,5 +165,39 @@ struct ZoomAbleView<V: View>: View {
         let convertedPoint = CGPoint(x: panelLocation.x - panelCenter.x + imageCenter.x - contentOffset.width,
                                      y: panelLocation.y - panelCenter.y + imageCenter.y - contentOffset.height)
         return convertedPoint
+    }
+
+    func reset() {
+        withAnimation {
+            zoom = 1.0
+            contentOffset = CGSize(width: 0, height: 0)
+        }
+    }
+
+    func zoomIn() {
+        var newZoom = zoom + 0.2
+        if newZoom > max {
+            newZoom = max
+        }
+        if newZoom == zoom {
+            return
+        }
+        withAnimation {
+            zoom = newZoom
+        }
+    }
+
+    func zoomOut() {
+        var newZoom = zoom - 0.2
+        if newZoom < min {
+            newZoom = min
+        }
+
+        if newZoom == zoom {
+            return
+        }
+        withAnimation {
+            zoom = newZoom
+        }
     }
 }
