@@ -19,6 +19,6 @@ public struct ZoomAbleViewNoBinding<V: View>: View {
     }
 
     public var body: some View {
-        ZoomAbleView(zoom: $zoom, offset: $offset, max: max, min: min, content: content)
+        ZoomAbleView(zoom: $zoom, offset: $offset, max: max, min: min, showControl: showControl, autoHidden: autoHidden, content: content)
     }
 }
